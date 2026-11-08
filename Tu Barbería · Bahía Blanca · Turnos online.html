@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!doctype html><html lang="es-AR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Tu Barbería · Bahía Blanca · Turnos online</title><meta name="description" content="Barbería en tu barrio, Bahía Blanca. Reservá tu turno online, elegí barbero y sumá productos.">
 <meta name="theme-color" content="#100d0a">
@@ -1478,6 +1477,59 @@ main>section{position:relative;z-index:2}
 @media (max-width:1100px){.seat{grid-template-columns:1fr}.seat-cols{grid-template-columns:1fr}}
 @media (max-width:560px){.seat-main{padding:18px}.seat-name{font-size:36px}.seat.empty{flex-direction:column;align-items:flex-start}}
 @media (max-width:900px){#admin{grid-template-columns:minmax(0,1fr)!important}#admin .main{min-width:0;overflow-x:hidden}.seat,.seat-main,.seat-cols>*,.seat .scan,.seat .scan input{min-width:0}.seat-hd{flex-wrap:wrap}#admin .kpis{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}#admin .kpi b{font-size:26px}}
+/* ===== Ajustes finos para celular ===== */
+@media (max-width:760px){
+ html{-webkit-text-size-adjust:100%}
+ body{-webkit-tap-highlight-color:transparent}
+ /* hero */
+ .x-hero .x-h1{font-size:clamp(84px,25vw,118px)!important;line-height:.86}
+ .x-actions{display:flex!important;flex-wrap:wrap;gap:10px}
+ .x-actions .x-btn{flex:1 1 auto;justify-content:center;padding:16px 18px}
+ .x-hero-copy p{font-size:16.5px;line-height:1.55}
+ /* barra fija: aparece después del hero, sin tapar contenido */
+ .x-mbar{transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .35s;bottom:calc(12px + env(safe-area-inset-bottom,0px))!important}
+ body:not(.mbar-on) .x-mbar{transform:translateY(140%);opacity:0;pointer-events:none}
+ #site{padding-bottom:84px}
+ /* ritmo vertical más compacto */
+ .x-manifest{padding:96px 0 64px!important}
+ .x-ritual-pin,.x-hs-pin{padding:72px 0!important}
+ .x-final{padding:80px 0 110px!important}
+ .x-final-txt{margin-bottom:28px!important}
+ .x-foot{padding-top:48px!important}
+ .x-foot-big{margin-top:10px!important}
+ /* servicios: deslizables con el dedo, con snap */
+ .x-hs-track{scroll-padding-left:18px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+ .x-hs-track::-webkit-scrollbar{display:none}
+ .x-svc{scroll-snap-align:start;height:auto!important;min-height:340px;width:82vw!important}
+ /* equipo */
+ .x-portrait{aspect-ratio:5/4!important}
+ .x-binfo .x-btn,.x-binfo .x-btn span{color:#120e0a!important;opacity:1!important;transform:none!important}
+ /* tienda: tarjetas más limpias */
+ .st-grid{gap:12px!important}
+ /* tipografía de títulos de sección */
+ .x-h2{text-wrap:balance}
+ /* inputs: sin zoom automático en iOS */
+ input,select,textarea{font-size:16px!important}
+}
+/* ===== Panel en celular ===== */
+@media (max-width:900px){
+ #admin .main{padding:20px 16px 110px!important}
+ #admin .side{padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px))!important;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;box-shadow:0 -10px 30px rgba(0,0,0,.35)}
+ #admin .side::-webkit-scrollbar{display:none}
+ #admin .side .navi{flex:none;scroll-snap-align:start;min-width:74px}
+ #admin .kpis{gap:10px!important}
+ #admin .kpi{padding:14px!important;min-width:0}
+ #admin .kpi b{font-size:clamp(19px,6.2vw,26px)!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ #admin .t-wrap,#admin .card:has(> table.t){overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+ #admin table.t{min-width:620px}
+ #admin .filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+ #admin .filters>*{min-width:0;width:100%}
+ #admin .goalrow{gap:10px}
+ #admin .goalrow .gp{white-space:nowrap;flex:none}
+ #admin h1,#admin .h1{text-wrap:balance}
+ #admin .seg{scrollbar-width:none}#admin .seg::-webkit-scrollbar{display:none}
+ #admin button,#admin .btn{min-height:42px}
+}
 </style></head><body>
 <div id="intro" aria-hidden="true">
   <div class="ld-mono"><span>R</span><span>B</span></div>
@@ -6664,8 +6716,8 @@ function initScene(){
  const T=THREE, mobile=matchMedia('(max-width:900px)').matches, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
  let renderer;
  canvas.addEventListener('webglcontextlost',()=>document.body.classList.add('no-gl'));
- try{renderer=new T.WebGLRenderer({canvas,antialias:!mobile,alpha:true,powerPreference:'high-performance'})}catch(e){canvas.remove();return}
- renderer.setPixelRatio(Math.min(devicePixelRatio,mobile?1.3:1.75));
+ try{renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'})}catch(e){canvas.remove();return}
+ renderer.setPixelRatio(Math.min(devicePixelRatio,mobile?2:1.75));
  renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.08;
  const scene=new T.Scene(), cam=new T.PerspectiveCamera(30,1,.1,100);cam.position.set(0,0,10);
  const pm=new T.PMREMGenerator(renderer);scene.environment=pm.fromScene(new T.RoomEnvironment(),.04).texture;
@@ -6761,7 +6813,7 @@ function initScene(){
  const sec=id=>{const e=$(id);if(!e)return{top:0,h:1};const r=e.getBoundingClientRect();return{top:r.top+scrollY,h:e.offsetHeight}};
  const lerp=(a,b,k)=>a+(b-a)*k, clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
  let last=performance.now(), spin=0, vel=0, lastY=scrollY, run=true;
- const state={x:mobile?.8:1.7,y:.3,s:mobile?.44:.63,rz:0};
+ const state={x:mobile?.8:1.7,y:1,s:mobile?.38:.63,rz:0};
  document.addEventListener('visibilitychange',()=>{run=!document.hidden;if(run)requestAnimationFrame(loop)});
  function loop(now){
   if(!run)return;
@@ -6769,14 +6821,14 @@ function initScene(){
   const y=scrollY, rit=sec('#ritual'), hero=sec('#hero');
   vel=lerp(vel,Math.abs(y-lastY)/Math.max(dt,.001)/1000,.08);lastY=y;
   const endFade=rit.top+rit.h-H*.6;
-  const op=1-clamp((y-endFade)/(H*.6));
+  const op=mobile?1-clamp((y-hero.h*.42)/(hero.h*.38)):1-clamp((y-endFade)/(H*.6));
   canvas.style.opacity=op;
   if(vid.isConnected){vid.style.opacity=GL.hasVideo?(.6*(1-clamp(y/(hero.h*.9)))):0}
   if(op<=0.001&&!$('#site').classList.contains('hidden')){requestAnimationFrame(loop);return}
   // objetivos según scroll
   const p1=clamp(y/hero.h), p2=clamp((y-(rit.top-H*.6))/(H*.6)), pr=clamp((y-rit.top)/(rit.h-H));
-  const xR=mobile?halfW*.6:halfW*.4, xL=mobile?0:-halfW*.36;
-  let tx=lerp(xR,xL,ease(p2)), ty=mobile?.95-p1*.8:.3-p2*.3, ts=mobile?.44:lerp(.63,.68,p2);
+  const xR=mobile?halfW*.5:halfW*.4, xL=mobile?0:-halfW*.36;
+  let tx=lerp(xR,xL,ease(p2)), ty=mobile?1.12-p1*.8:.3-p2*.3, ts=mobile?.38:lerp(.63,.68,p2);
   if(mobile&&p2>0)ts=lerp(.44,.4,p2);
   const k=1-Math.exp(-dt*4), km=1-Math.exp(-dt*3);
   state.x=lerp(state.x,tx,k);state.y=lerp(state.y,ty+Math.sin(now*.0006)*.06,k);state.s=lerp(state.s,ts*(1+pr*.12),k);
@@ -6811,8 +6863,8 @@ const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function siteInit(){
  runLoader();
  // scroll suave
- if(window.Lenis&&!RM){lenis=new Lenis({duration:1.15,smoothWheel:true,wheelMultiplier:.9});const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}
- const lockWatch=new MutationObserver(()=>{const open=$('#drawer').classList.contains('open')||$('#modalBg').classList.contains('open')||$('#mnav').classList.contains('open');if(lenis)open?lenis.stop():lenis.start()});
+ window.mkLenis=()=>{if(window.Lenis&&!RM&&!lenis){lenis=new Lenis({duration:1.15,smoothWheel:true,wheelMultiplier:.9})}};mkLenis();{const raf=t=>{if(lenis)lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}
+ const lockWatch=new MutationObserver(()=>{if(document.body.classList.contains('in-admin'))return;const open=$('#drawer').classList.contains('open')||$('#modalBg').classList.contains('open')||$('#mnav').classList.contains('open');if(lenis)open?lenis.stop():lenis.start()});
  ['#drawer','#modalBg','#mnav'].forEach(s=>lockWatch.observe($(s),{attributes:true,attributeFilter:['class']}));
  document.addEventListener('click',e=>{
   const a=e.target.closest('a[href^="#"]');
@@ -6931,8 +6983,8 @@ function route(){
  $('#login').classList.toggle('hidden',!adm||ok);
  $('#admin').classList.toggle('hidden',!adm||!ok);
  $('.grain').style.display=adm?'none':'';
- if(adm){if(lenis)lenis.stop();document.documentElement.classList.remove('lenis','lenis-smooth');$('#intro').classList.add('done','gone');scrollTo(0,0);if(ok)renderAdmin();else{const i=$$('#pin input');i.forEach(x=>x.value='');setTimeout(()=>i[0].focus(),50)}}
- else{if(lenis)lenis.start();renderShop();renderNext();renderTeam();if(location.hash==='#top')scrollTo(0,0)}
+ if(adm){document.body.classList.add('in-admin');if(lenis){lenis.destroy();lenis=null}document.documentElement.classList.remove('lenis','lenis-smooth','lenis-stopped','lenis-scrolling');$('#intro').classList.add('done','gone');scrollTo(0,0);if(ok)renderAdmin();else{const i=$$('#pin input');i.forEach(x=>x.value='');setTimeout(()=>i[0].focus(),50)}}
+ else{document.body.classList.remove('in-admin');if(!lenis&&window.mkLenis)mkLenis();if(lenis)lenis.start();renderShop();renderNext();renderTeam();if(location.hash==='#top')scrollTo(0,0)}
 }
 /* ================= v3 · reserva rápida y llamados a la acción ================= */
 const QB={svc:'clasico',barber:'any',day:null};
@@ -7757,6 +7809,7 @@ vMi.bind=()=>{_mibind&&_mibind();seatBind(meB())};
 (function(){let n=0;const t=setInterval(()=>{n++;const has=typeof GL!=='undefined';const ok=has&&GL.ready&&GL.frames>0;
  if(ok){document.body.classList.remove('no-gl');clearInterval(t);return}
  if(!has||!GL.ready||n>=8)document.body.classList.add('no-gl');if(n>=12)clearInterval(t)},1000);})();
+/* barra fija de reserva en celular: aparece cuando el botón del hero ya no se ve */
+(()=>{const hero=document.querySelector('#hero .x-actions');if(!hero||!('IntersectionObserver' in window)){document.body.classList.add('mbar-on');return}
+ const io=new IntersectionObserver(([e])=>{document.body.classList.toggle('mbar-on',!e.isIntersecting&&e.boundingClientRect.top<0)},{threshold:0});io.observe(hero)})();
 </script></body></html>
-
-</body></html>
