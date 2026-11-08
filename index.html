@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barbería RB · Bahía Blanca</title>
+<meta name="description" content="Barbería RB, Bahía Blanca. Cortes, barba y turnos online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f0e0d;--card:#1a1816;--line:#2c2926;--tx:#f2ede6;--mut:#a39b90;--acc:#c9a24a;--acc2:#e6c26e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.tag{display:block;background:var(--acc);color:#14110c;text-align:center;font-size:13px;font-weight:600;padding:8px 16px}
+nav{position:sticky;top:0;z-index:5;background:rgba(15,14,13,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:Oswald;font-size:24px;letter-spacing:2px}
+.logo b{color:var(--acc)}
+nav ul{display:flex;gap:22px;list-style:none;font-size:14px;color:var(--mut)}
+nav ul a:hover{color:var(--tx)}
+.btn{display:inline-block;background:var(--acc);color:#14110c;font-weight:600;padding:13px 24px;border-radius:999px;border:0;cursor:pointer;font-size:15px;transition:.2s}
+.btn:hover{background:var(--acc2)}
+.btn.ghost{background:transparent;color:var(--tx);border:1px solid var(--line)}
+.hero{padding:90px 0 80px;background:radial-gradient(ellipse at 70% 0%,rgba(201,162,74,.18),transparent 60%)}
+.hero h1{font-family:Oswald;font-size:clamp(44px,9vw,92px);line-height:1;text-transform:uppercase}
+.hero h1 span{color:var(--acc)}
+.hero p{color:var(--mut);max-width:520px;margin:22px 0 32px;font-size:18px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:flex;gap:40px;margin-top:56px;flex-wrap:wrap}
+.stats div{font-size:13px;color:var(--mut)}
+.stats strong{display:block;font-family:Oswald;font-size:32px;color:var(--tx)}
+section{padding:80px 0;border-top:1px solid var(--line)}
+h2{font-family:Oswald;font-size:clamp(32px,5vw,46px);text-transform:uppercase;margin-bottom:10px}
+.sub{color:var(--mut);margin-bottom:40px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+.svc{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.svc h3{font-size:17px;font-weight:600}
+.price{font-family:Oswald;color:var(--acc);font-size:22px;white-space:nowrap}
+.card p{color:var(--mut);font-size:14px;margin-top:6px}
+.note{font-size:12px;color:var(--mut);margin-top:16px}
+.book{display:grid;gap:24px;grid-template-columns:1fr 1fr}
+label{display:block;font-size:13px;color:var(--mut);margin:14px 0 6px}
+select,input{width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slot{background:var(--bg);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:10px 0;cursor:pointer;font:inherit;font-size:14px}
+.slot.on{background:var(--acc);color:#14110c;border-color:var(--acc);font-weight:600}
+.slot:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.sum{font-size:15px}
+.sum li{list-style:none;display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+.sum li span:first-child{color:var(--mut)}
+.panel{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.kpi strong{display:block;font-family:Oswald;font-size:34px;color:var(--acc)}
+.kpi span{font-size:13px;color:var(--mut)}
+.bars{margin-top:8px}
+.bar{display:flex;align-items:center;gap:10px;font-size:13px;margin:10px 0}
+.bar i{flex:1;height:10px;background:var(--bg);border-radius:6px;overflow:hidden}
+.bar i b{display:block;height:100%;background:var(--acc)}
+.bar em{font-style:normal;color:var(--mut);width:42px;text-align:right}
+ul.feat{list-style:none;margin-top:14px}
+ul.feat li{padding:7px 0 7px 26px;position:relative;font-size:15px}
+ul.feat li:before{content:"✓";position:absolute;left:0;color:var(--acc);font-weight:700}
+.map{border-radius:14px;overflow:hidden;border:1px solid var(--line);height:340px}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(.5) invert(.9) hue-rotate(180deg)}
+.prop{background:linear-gradient(135deg,#221d14,#15130f);border:1px solid #4a3d22;border-radius:18px;padding:40px}
+.prop h2{color:var(--acc)}
+footer{padding:36px 0;text-align:center;color:var(--mut);font-size:13px;border-top:1px solid var(--line)}
+.wa{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.4);z-index:6}
+.wa svg{width:30px;height:30px;fill:#fff}
+@media(max-width:760px){nav ul{display:none}.book{grid-template-columns:1fr}.hero{padding:60px 0}.prop{padding:26px}section{padding:60px 0}}
+</style>
+</head>
+<body>
+
+<a class="tag" href="#propuesta">Demo de propuesta para Barbería RB · ver qué incluye ↓</a>
+
+<nav><div class="wrap">
+  <div class="logo">BARBERÍA <b>RB</b></div>
+  <ul><li><a href="#servicios">Servicios</a></li><li><a href="#turnos">Turnos</a></li><li><a href="#panel">Panel</a></li><li><a href="#ubicacion">Ubicación</a></li></ul>
+  <a class="btn" href="#turnos" style="padding:9px 18px;font-size:14px">Reservar</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <h1>Tu estilo,<br><span>bien hecho.</span></h1>
+  <p>Cortes, fades y barba en Bahía Blanca. Reservá tu turno online en menos de un minuto, sin llamadas ni esperas.</p>
+  <div class="cta"><a class="btn" href="#turnos">Reservar turno</a><a class="btn ghost" href="#servicios">Ver servicios</a></div>
+  <div class="stats">
+    <div><strong>24/7</strong>Reservas online</div>
+    <div><strong>30''</strong>Para sacar turno</div>
+    <div><strong>0</strong>Turnos perdidos</div>
+  </div>
+</div></header>
+
+<section id="servicios"><div class="wrap">
+  <h2>Servicios</h2>
+  <p class="sub">Elegí lo que necesitás. Precios y duración siempre visibles.</p>
+  <div class="grid" id="svcGrid"></div>
+  <p class="note">* Precios de ejemplo. Se cargan los reales de la barbería.</p>
+</div></section>
+
+<section id="turnos"><div class="wrap">
+  <h2>Reservá tu turno</h2>
+  <p class="sub">Así reservan tus clientes: eligen servicio, barbero y horario. El turno te llega por WhatsApp.</p>
+  <div class="book">
+    <div class="card">
+      <label>Servicio</label><select id="fSvc"></select>
+      <label>Barbero</label><select id="fBar"><option>Cualquiera disponible</option><option>Barbero 1</option><option>Barbero 2</option></select>
+      <label>Día</label><input type="date" id="fDay">
+      <label>Horario</label><div class="slots" id="slots"></div>
+      <label>Tu nombre</label><input id="fName" placeholder="Ej: Juan">
+    </div>
+    <div class="card">
+      <h3 style="font-family:Oswald;font-size:22px;margin-bottom:8px">Resumen</h3>
+      <ul class="sum" id="sum"></ul>
+      <button class="btn" style="width:100%;margin-top:24px" id="confirm">Confirmar por WhatsApp</button>
+      <p class="note">Demo: abre WhatsApp con el mensaje armado. En la versión final el turno queda guardado en el panel.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="panel"><div class="wrap">
+  <h2>Panel del dueño</h2>
+  <p class="sub">Lo que ve la barbería por dentro: turnos, caja y rendimiento de cada barbero. (Datos de ejemplo)</p>
+  <div class="panel">
+    <div class="card kpi"><strong>47</strong><span>Turnos esta semana</span></div>
+    <div class="card kpi"><strong>$612.000</strong><span>Facturado en la semana</span></div>
+    <div class="card kpi"><strong>92%</strong><span>Asistencia (recordatorios automáticos)</span></div>
+    <div class="card kpi"><strong>8</strong><span>Productos con stock bajo</span></div>
+  </div>
+  <div class="grid" style="margin-top:16px">
+    <div class="card"><h3>Rendimiento por barbero</h3>
+      <div class="bars">
+        <div class="bar">Barbero 1<i><b style="width:86%"></b></i><em>26</em></div>
+        <div class="bar">Barbero 2<i><b style="width:62%"></b></i><em>21</em></div>
+      </div>
+    </div>
+    <div class="card"><h3>Servicios más pedidos</h3>
+      <div class="bars">
+        <div class="bar">Fade<i><b style="width:90%"></b></i><em>45%</em></div>
+        <div class="bar">Corte + barba<i><b style="width:60%"></b></i><em>30%</em></div>
+        <div class="bar">Barba<i><b style="width:30%"></b></i><em>15%</em></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="ubicacion"><div class="wrap">
+  <h2>Ubicación</h2>
+  <p class="sub">Bahía Blanca, Buenos Aires.</p>
+  <div class="map"><iframe loading="lazy" title="Mapa Barbería RB" src="https://maps.google.com/maps?q=-38.7068325,-62.2778558&z=16&output=embed"></iframe></div>
+</div></section>
+
+<section id="propuesta"><div class="wrap">
+  <div class="prop">
+    <h2>Qué incluye la propuesta</h2>
+    <p class="sub" style="margin-bottom:10px">Una web lista para que tus clientes reserven solos, más un panel para manejar el negocio.</p>
+    <div class="grid">
+      <div><h3>Para tus clientes</h3><ul class="feat">
+        <li>Web propia con tu marca</li><li>Turnos online 24/7</li><li>Servicios y precios actualizados</li><li>Botón directo a WhatsApp</li><li>Ubicación y horarios</li></ul></div>
+      <div><h3>Para vos</h3><ul class="feat">
+        <li>Agenda de turnos por barbero</li><li>Control de stock de productos</li><li>Facturación y caja diaria</li><li>Rendimiento por barbero</li><li>Recordatorios automáticos</li></ul></div>
+    </div>
+    <p style="margin-top:28px;color:var(--mut)">Propuesta de <strong style="color:var(--tx)">Bautista Thiessen</strong> · Bahía Blanca</p>
+  </div>
+</div></section>
+
+<footer>Barbería RB · Bahía Blanca · Demo realizada por Bautista Thiessen</footer>
+
+<a class="wa" href="#turnos" aria-label="Reservar"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2.1 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.1z"/></svg></a>
+
+<script>
+var svcs=[["Corte clásico",14000,"40 min · tijera y máquina"],["Fade / degradé",15000,"40 min · terminación a navaja"],["Corte + barba",19000,"1 h · perfilado y toalla caliente"],["Barba",9000,"20 min · recorte y perfilado"],["Corte niño",12000,"30 min · hasta 12 años"],["Perfilado de cejas",3000,"10 min"]];
+var $=function(id){return document.getElementById(id)};
+var fmt=function(n){return "$"+n.toLocaleString("es-AR")};
+$("svcGrid").innerHTML=svcs.map(function(s){return '<div class="card"><div class="svc"><h3>'+s[0]+'</h3><span class="price">'+fmt(s[1])+'</span></div><p>'+s[2]+'</p></div>'}).join("");
+$("fSvc").innerHTML=svcs.map(function(s,i){return '<option value="'+i+'">'+s[0]+' · '+fmt(s[1])+'</option>'}).join("");
+var t=new Date();$("fDay").value=t.toISOString().slice(0,10);$("fDay").min=$("fDay").value;
+var hours=["10:00","10:40","11:20","12:00","15:00","15:40","16:20","17:00","17:40","18:20","19:00","19:40"],sel=null;
+function drawSlots(){var d=$("fDay").value,seed=0;for(var i=0;i<d.length;i++)seed+=d.charCodeAt(i);
+ $("slots").innerHTML=hours.map(function(h,i){var busy=(seed+i*7)%5===0;return '<button class="slot'+(sel===h?' on':'')+'" '+(busy?'disabled':'')+' data-h="'+h+'">'+h+'</button>'}).join("");
+ Array.prototype.forEach.call(document.querySelectorAll(".slot"),function(b){b.onclick=function(){sel=b.dataset.h;drawSlots();draw()}})}
+function draw(){var s=svcs[$("fSvc").value],d=$("fDay").value.split("-").reverse().join("/");
+ $("sum").innerHTML='<li><span>Servicio</span><span>'+s[0]+'</span></li><li><span>Barbero</span><span>'+$("fBar").value+'</span></li><li><span>Día</span><span>'+d+'</span></li><li><span>Horario</span><span>'+(sel||"—")+'</span></li><li><span>Total</span><span class="price">'+fmt(s[1])+'</span></li>'}
+["fSvc","fBar"].forEach(function(id){$(id).onchange=draw});$("fDay").onchange=function(){sel=null;drawSlots();draw()};
+$("confirm").onclick=function(){if(!sel){alert("Elegí un horario");return}var s=svcs[$("fSvc").value];
+ var m="Hola! Quiero reservar en Barbería RB:\n• "+s[0]+"\n• "+$("fBar").value+"\n• "+$("fDay").value.split("-").reverse().join("/")+" a las "+sel+"\n• Nombre: "+($("fName").value||"-");
+ window.open("https://wa.me/?text="+encodeURIComponent(m),"_blank")};
+drawSlots();draw();
+</script>
+</body>
+</html>
